@@ -1,18 +1,23 @@
 function Player(userName) {
     this.userName = userName;
     this.score = 0;
-}
+};
 
 function Turn() {
     this.total = 0;
-}
+};
 
 Turn.prototype.diceRoller = function() {
     var randNumber = Math.floor(Math.random() * 6) + 1;
-    console.log(randNumber);
-    this.total += randNumber;
-    return randNumber;
-}
+    if (randNumber == 1) {
+        this.total = 0;
+        return randNumber;
+    } else {
+        this.total += randNumber;
+        return randNumber;
+    };
+
+};
 
 $(document).ready(function() {
     var newTurn = new Turn();
@@ -22,10 +27,13 @@ $(document).ready(function() {
 $("form#roll").submit(function(event) {
     event.preventDefault();
 
+    var result = newTurn.diceRoller();
+
+    $('#roll').text(result);
+
     $('#roll-total').text(newTurn.total);
 
-    var result = newTurn.diceRoller();
-    $('#roll').text(result);
+
 
 
 
