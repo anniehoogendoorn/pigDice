@@ -11,11 +11,25 @@ Turn.prototype.diceRoller = function() {
     var randNumber = Math.floor(Math.random() * 6) + 1;
     console.log(randNumber);
     this.total += randNumber;
-    return this.total;
+    return randNumber;
 }
 
+$(document).ready(function() {
+    var newTurn = new Turn();
+    var total = newTurn.total;
+    $("#roll-total").text(total);
 
-// var diceRoll = function() {
-//     // var randomNumber = Math.floor(Math.random)
-//     return Math.floor(Math.random() * 6) + 1;
-// }
+$("form#roll").submit(function(event) {
+    event.preventDefault();
+
+    $('#roll-total').text(newTurn.total);
+
+    var result = newTurn.diceRoller();
+    $('#roll').text(result);
+
+
+
+});
+
+// $("")
+});
