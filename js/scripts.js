@@ -10,6 +10,7 @@ function Turn(player) {
     this.player = player;
 };
 
+//Creates random number, saves it and then returns it
 Turn.prototype.diceRoller = function() {
     var randNumber = Math.floor(Math.random() * 6) + 1;
     if (randNumber == 1) {
@@ -24,6 +25,7 @@ Turn.prototype.diceRoller = function() {
 
 };
 
+//
 Turn.prototype.endTurn = function() {
     //adding total to score
     this.player.score += this.total;
