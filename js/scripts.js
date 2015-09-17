@@ -21,14 +21,15 @@ Turn.prototype.diceRoller = function(player1, player2) {
         this.endTurn(player1, player2);
         // this.randNumber += randNumber;
         return randNumber;
-    } else if ((this.total + this.player.score) > 5) {
-        alert("Winner");
-        //show current roll
-        //update score with winning roll added
     }
+    // else if ((this.total + this.player.score) > 7) {
+    //     this.total + this.player.score
+    //     alert("Winner");
+    //     //show current roll
+    //     //update score with winning roll added
+    // }
 
     else {
-        // this.total += randNumber;
         this.randNumber += randNumber;
         return randNumber;
     };
@@ -90,6 +91,15 @@ $(document).ready(function() {
 
         //Prints the roll total to the page
         $('#roll-total').text(currentTurn.total);
+// debugger;
+        if ((currentTurn.total + currentTurn.player.score) > 2) {
+
+            $('#player1-score').text(currentTurn.total + currentTurn.player.score);
+
+            alert("Winner");
+            //show current roll
+            //update score with winning roll added
+        };
     });
 
     //This code runs when you click the End Turn button
