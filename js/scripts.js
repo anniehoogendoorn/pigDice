@@ -12,23 +12,34 @@ function Turn(player) {
 
 //Creates random number, saves it and then returns it
 Turn.prototype.diceRoller = function(player1, player2) {
+    debugger;
     var randNumber = Math.floor(Math.random() * 6) + 1;
+    this.total += randNumber;
+
     if (randNumber == 1) {
         this.total = 0;
         this.endTurn(player1, player2);
         // this.randNumber += randNumber;
         return randNumber;
-    } else {
-        this.total += randNumber;
+    } else if ((this.total + this.player.score) > 5) {
+        alert("Winner");
+        //show current roll
+        //update score with winning roll added
+    }
+
+    else {
+        // this.total += randNumber;
         this.randNumber += randNumber;
         return randNumber;
     };
 
 };
 
-//
+//Turn.prototype.winChecker = function()
+
+
 Turn.prototype.endTurn = function(player1, player2) {
-    debugger;
+    //debugger;
     //adding total to score
     this.player.score += this.total;
     //and clearing total
