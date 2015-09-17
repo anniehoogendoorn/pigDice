@@ -14,10 +14,10 @@ function Turn(player) {
 Turn.prototype.diceRoller = function() {
     var randNumber = Math.floor(Math.random() * 6) + 1;
     if (randNumber == 1) {
-        this.total = 0;
+        //this.total = 0;
         this.endTurn();
         // this.randNumber += randNumber;
-        return randNumber;
+        //return randNumber;
     } else {
         this.total += randNumber;
         this.randNumber += randNumber;
@@ -28,17 +28,42 @@ Turn.prototype.diceRoller = function() {
 
 //
 Turn.prototype.endTurn = function(player1, player2) {
-    //adding total to score
-    this.player.score += this.total;
-    //and clearing total
-    this.total = 0;
-    this.randNumber = 0;
-    if (this.player == player1) {
-        this.player = player2;
+    if ( this.randNumber == 1) {
+        this.total = 0;
+        // this.randNumber = 1;
+        if (this.player == player1) {
+            this.player = player2;
+        } else {
+            this.player = player1;
+        }
     } else {
-        this.player = player1;
+        //adding total to score
+        this.player.score += this.total;
+        //and clearing total
+        this.total = 0;
+        this.randNumber = 0;
+        if (this.player == player1) {
+            this.player = player2;
+        } else {
+            this.player = player1;
+        }
+
+
     }
-    // console.log(this.player);
+
+
+
+
+    // this.player.score += this.total;
+    // //and clearing total
+    // this.total = 0;
+    // this.randNumber = 0;
+    // if (this.player == player1) {
+    //     this.player = player2;
+    // } else {
+    //     this.player = player1;
+    // }
+    // // console.log(this.player);
 }
 
 
@@ -65,7 +90,8 @@ $(document).ready(function() {
         event.preventDefault();
 
         //Creates a dice roll number
-        var result = currentTurn.diceRoller();
+        currentTurn.diceRoller()
+        var result = this.randNumber;
 
         //Prints the roll number to the page
         $('#roll').text(result);
