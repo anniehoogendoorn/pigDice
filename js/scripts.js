@@ -11,11 +11,11 @@ function Turn(player) {
 };
 
 //Creates random number, saves it and then returns it
-Turn.prototype.diceRoller = function() {
+Turn.prototype.diceRoller = function(player1, player2) {
     var randNumber = Math.floor(Math.random() * 6) + 1;
     if (randNumber == 1) {
         this.total = 0;
-        this.endTurn();
+        this.endTurn(player1, player2);
         // this.randNumber += randNumber;
         return randNumber;
     } else {
@@ -28,6 +28,7 @@ Turn.prototype.diceRoller = function() {
 
 //
 Turn.prototype.endTurn = function(player1, player2) {
+    debugger;
     //adding total to score
     this.player.score += this.total;
     //and clearing total
@@ -35,7 +36,7 @@ Turn.prototype.endTurn = function(player1, player2) {
     this.randNumber = 0;
     if (this.player == player1) {
         this.player = player2;
-    } else {
+    } else if (this.player == player2) {
         this.player = player1;
     }
     // console.log(this.player);
@@ -60,15 +61,21 @@ $(document).ready(function() {
     $('#player1-score').text(player1.score);
     $('#player2-score').text(player2.score);
 
+    //Prints current Player
+    $('#current_player').text(currentTurn.player.userName);
+
     //This code runs when you click the Roll button
     $("form#roll").submit(function(event) {
         event.preventDefault();
 
         //Creates a dice roll number
-        var result = currentTurn.diceRoller();
+        var result = currentTurn.diceRoller(player1, player2);
 
         //Prints the roll number to the page
         $('#roll').text(result);
+
+        //Prints current Player
+        $('#current_player').text(currentTurn.player.userName);
 
         //Prints the roll total to the page
         $('#roll-total').text(currentTurn.total);
@@ -79,6 +86,9 @@ $(document).ready(function() {
         event.preventDefault();
 
         currentTurn.endTurn(player1, player2);
+
+        //Prints current Player
+        $('#current_player').text(currentTurn.player.userName);
 
         //Prints players scores
         $('#player1-score').text(player1.score);
