@@ -5,3 +5,7 @@ h1 {
 #players {
     text-align: center;
 }
+
+.active {
+    border: 2px solid blue;
+}

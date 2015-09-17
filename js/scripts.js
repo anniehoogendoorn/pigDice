@@ -1,8 +1,8 @@
 function Player(userName) {
     this.userName = userName;
     this.score = 0;
-
 };
+
 //pass it a player object!
 function Turn(player) {
     this.total = 0;
@@ -21,26 +21,14 @@ Turn.prototype.diceRoller = function(player1, player2) {
         this.endTurn(player1, player2);
         // this.randNumber += randNumber;
         return randNumber;
-    }
-    // else if ((this.total + this.player.score) > 7) {
-    //     this.total + this.player.score
-    //     alert("Winner");
-    //     //show current roll
-    //     //update score with winning roll added
-    // }
-
-    else {
+    } else {
         this.randNumber += randNumber;
         return randNumber;
     };
 
 };
 
-//Turn.prototype.winChecker = function()
-
-
 Turn.prototype.endTurn = function(player1, player2) {
-    //debugger;
     //adding total to score
     this.player.score += this.total;
     //and clearing total
@@ -48,13 +36,14 @@ Turn.prototype.endTurn = function(player1, player2) {
     this.randNumber = 0;
     if (this.player == player1) {
         this.player = player2;
+        $("#player2").toggleClass("active");
+        $("#player1").toggleClass("active");
     } else if (this.player == player2) {
         this.player = player1;
-    }
-    // console.log(this.player);
-}
-
-
+        $("#player2").toggleClass("active");
+        $("#player1").toggleClass("active");
+    };
+};
 
 $(document).ready(function() {
 
@@ -86,19 +75,13 @@ $(document).ready(function() {
         //Prints the roll number to the page
         $('#roll').text(result);
 
-        //Prints current Player
-        $('#current_player').text(currentTurn.player.userName);
-
         //Prints the roll total to the page
         $('#roll-total').text(currentTurn.total);
-// debugger;
-        if ((currentTurn.total + currentTurn.player.score) > 2) {
 
+        //Determines the winner and prints player score to page
+        if ((currentTurn.total + currentTurn.player.score) >= 20) {
             $('#player1-score').text(currentTurn.total + currentTurn.player.score);
-
             alert("Winner");
-            //show current roll
-            //update score with winning roll added
         };
     });
 
@@ -118,8 +101,5 @@ $(document).ready(function() {
         //Prints the cleared roll and roll-total on page
         $('#roll').text(currentTurn.randNumber);
         $('#roll-total').text(currentTurn.total);
-
-
     });
-
 });
