@@ -1,5 +1,11 @@
+/*html {
+    height: 100%; }*/
+
 h1 {
     text-align: center;
+    font-family: 'Walter Turncoat', cursive;
+    font-size: 3.4em;
+    color: #FF8BCF;
 }
 
 #players {
@@ -7,5 +13,30 @@ h1 {
 }
 
 .active {
-    border: 2px solid blue;
+    border: 2px solid #fff;
+    color:
+}
+
+/*.active h3 {
+    color: green;
+}*/
+
+body {
+    background-image: url("http://1nova.com/wallpapers/wp-content/uploads/sites/34/2015/02/Retro-80s-Arcade-Game.jpg");
+    /*background: #252831;*/
+    /*background: linear-gradient( #1A1A1A, #FB95DA, 100%);*/
+    /*background-size: 100% 100%;*/
+    color: white;
+    height: 100%;
+    background-repeat: no-repeat;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+.btn #roll {
+    background: #5BD3FF;
 }

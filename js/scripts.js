@@ -12,7 +12,7 @@ function Turn(player) {
 
 //Creates random number, saves it and then returns it
 Turn.prototype.diceRoller = function(player1, player2) {
-    debugger;
+    
     var randNumber = Math.floor(Math.random() * 6) + 1;
     this.total += randNumber;
 
@@ -79,9 +79,15 @@ $(document).ready(function() {
         $('#roll-total').text(currentTurn.total);
 
         //Determines the winner and prints player score to page
-        if ((currentTurn.total + currentTurn.player.score) >= 20) {
-            $('#player1-score').text(currentTurn.total + currentTurn.player.score);
-            alert("Winner");
+        if ((currentTurn.total + currentTurn.player.score) >= 10) {
+            if (currentTurn.player == player1) {
+                $('#player1-score').text(currentTurn.total + currentTurn.player.score);
+                alert("Winner");
+            } else if (currentTurn.player == player2) {
+                $('#player2-score').text(currentTurn.total + currentTurn.player.score)
+                alert("Winner");
+            };
+
         };
     });
 
