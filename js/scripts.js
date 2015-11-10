@@ -58,6 +58,8 @@ $(document).ready(function() {
     $( "#player1" ).hide().show("slow");
     $( "#player2" ).hide().show("slow");
     $( "h1" ).hide().show("slow");
+    $( "p" ).hide().show("slow");
+
 
 
     //Prints initial Roll Total of 0
@@ -84,13 +86,13 @@ $(document).ready(function() {
         $('#roll-total').text(currentTurn.total);
 
         //Determines the winner and prints player score to page
-        if ((currentTurn.total + currentTurn.player.score) >= 10) {
+        if ((currentTurn.total + currentTurn.player.score) >= 100) {
             if (currentTurn.player == player1) {
                 $('#player1-score').text(currentTurn.total + currentTurn.player.score);
-                alert("Winner");
+                alert("You are the winner!");
             } else if (currentTurn.player == player2) {
                 $('#player2-score').text(currentTurn.total + currentTurn.player.score)
-                alert("Winner");
+                alert("You are the winner!");
             };
 
         };
