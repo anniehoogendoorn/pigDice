@@ -12,7 +12,7 @@ function Turn(player) {
 
 //Creates random number, saves it and then returns it
 Turn.prototype.diceRoller = function(player1, player2) {
-    
+
     var randNumber = Math.floor(Math.random() * 6) + 1;
     this.total += randNumber;
 
@@ -54,6 +54,11 @@ $(document).ready(function() {
     var currentTurn = new Turn(player1);
 
     var total = currentTurn.total;
+
+    $( "#player1" ).hide().show("slow");
+    $( "#player2" ).hide().show("slow");
+    $( "h1" ).hide().show("slow");
+
 
     //Prints initial Roll Total of 0
     $("#roll-total").text(total);
