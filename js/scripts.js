@@ -8,7 +8,7 @@ function Player(userName) {
 function Turn(player) {
   this.total = 0;
   this.randNumber = 0;
-  this.player = player;”
+  this.player = player;
 };
 
 //Creates random number, saves it and then returns it
